@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="fr.danneker.thermodo"
+    version="1.0">
+
+    <name>Thermodo Plugin</name>
+    <description>Cordova plugin to thermodo</description>
+    <author>David DANNEKER</author>
+    <keywords>thermodo</keywords>
+    <license>Apache 2.0 License</license>
+    <js-module src="js/thermodo.js" name="ThermodoPlugin">
+        <clobbers target="danneker.thermodo" />
+    </js-module>
+    <platform name="android">
+
+        <source-file src="src/android/ThermodoPlugin.java" target-dir="src/fr/danneker/thermodo" />
+        <lib-file src="libs/thermodosdk-1.0.18.jar"/>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+        </config-file>
+        <config-file target="config.xml" parent="/widget/plugins">
+           <feature name="Thermodo">
+                <param name="android-package" value="fr.danneker.thermodo.ThermodoPlugin" />
+            </feature>
+       </config-file>
+    </platform>
+</plugin>
